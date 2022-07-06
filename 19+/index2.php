@@ -3,10 +3,9 @@
 session_start();
 
 require_once __DIR__.'/functions/calculate.php';
-//require_once __DIR__.'/functions/alerts.php';
 require_once __DIR__.'/error_output/alerts_output.php';
 
-$variables = [];    //пустой масив выражений
+$variables = [];    //пустой масив переменных
 $ix = 0;            //счетчик
 $_SESSION['answers'] = [];          //пустой масив для добавления верных ответов
 $_SESSION['answer_keys'] = [];      //пустой масив для добавления ответов пользователя
@@ -18,7 +17,7 @@ foreach ($operations as $operation){
         $b = random_int(-100, 100);     //случайное значение б
         $_SESSION['answers']['expression' . ($ix + 1)] = calculate($a, $b, $operation); //вызов функции калькулятор
         $_SESSION['answer_keys'][] = 'answer' . ($ix + 1);
-        $variables[$ix] = ['a' => $a, 'b' => $b, 'o' => $operation, 'k' => 'answer' . ($ix + 1)];  //выражение
+        $variables[$ix] = ['a' => $a, 'b' => $b, 'o' => $operation, 'k' => 'answer' . ($ix + 1)];  //переменные
         $ix++;
     }
 }
